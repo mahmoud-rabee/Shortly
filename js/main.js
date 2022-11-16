@@ -27,7 +27,7 @@ function fill() {
                                                              <span>${div.original}</span>
                                                              <div>
                                                                <span>${div.ct}</span>
-                                                               <span class='delete'>${div.delete}</span>
+                                                               
                                                                <span class='copy'>${div.copy}</span>
                                                              </div>
                                                           </div>
@@ -39,7 +39,7 @@ function fill() {
 
     copyButton.forEach(function(btn) {
         btn.onclick = function() {
-            let text = btn.previousElementSibling.previousElementSibling.innerHTML;
+            let text = btn.previousElementSibling.innerHTML;
             navigator.clipboard.writeText(text);
             btn.innerHTML = 'Copied!';
             btn.style.backgroundColor = 'hsl(257, 27%, 26%)';
@@ -58,7 +58,6 @@ function crateShortLink() {
         let div = {
             original : response2.result.original_link,
             ct : response2.result.short_link,
-            delete : 'delete',
             copy : 'Copy',
         }
         divs.push(div);
