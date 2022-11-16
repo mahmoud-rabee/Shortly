@@ -83,6 +83,7 @@ submit.addEventListener('click', function() {
         ////////////////////////////////////////////
     } else {
         crateShortLink();
+        input.value = "";
     }
 })
  
