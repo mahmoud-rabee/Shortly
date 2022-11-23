@@ -21,17 +21,18 @@ if(divs == null) {
 
 function fill() {
     document.querySelector('.result .container.two').innerHTML = '';
-    for(div of divs) {
-    document.querySelector('.container.two').innerHTML += `
-                                                          <div class="u">
-                                                             <span>${div.original}</span>
-                                                             <div>
-                                                               <span>${div.ct}</span>
-                                                               
-                                                               <span class='copy'>${div.copy}</span>
-                                                             </div>
-                                                          </div>
-                                                          `
+    for(let i = 0; i < divs.length; i++) {
+    document.querySelector('.container.two').innerHTML += 
+    `
+       <div class="u">
+           <span>${divs[i].original}</span>
+           <div class="yarab">
+              <span>${divs[i].ct}</span>
+              <span class='copy'>${divs[i].copy}</span>
+              <span onclick="deleteLink(${i})" class='delete'>Delete</span>
+           </div>
+       </div>
+   `
     }
 
     // create button to copy the shorted link
@@ -93,10 +94,9 @@ input.onfocus = function() {
     error.innerHTML = '';
 }
 ////////////////////////////////////
-
-
-
-
-
-//-----------------------------------------------------------------------------
-// www.frontendmentor.io
+// Add a new button to delete the shorted link that The user did not need it
+let deleteLink = function(i) {
+  divs.splice(i, 1);
+  localStorage.divs = JSON.stringify(divs);
+  fill();
+}
